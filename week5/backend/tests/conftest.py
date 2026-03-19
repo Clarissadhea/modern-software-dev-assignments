@@ -36,8 +36,4 @@ def client() -> Generator[TestClient, None, None]:
     with TestClient(app) as c:
         yield c
 
-    engine.dispose()  # release SQLite file handles before cleanup (required on Windows)
-    try:
-        os.unlink(db_path)
-    except OSError:
-        pass  # best-effort: Windows may still hold the file briefly
+    os.unlink(db_path)
