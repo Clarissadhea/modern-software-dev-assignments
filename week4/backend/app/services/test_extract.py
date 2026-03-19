@@ -1,17 +1,12 @@
 from backend.app.services.extract import extract_action_items
 
-
-def test_extract_action_items():
+def test_extract_action_items_basic():
     text = """
-    This is a note
-    - TODO: write tests
     - Ship it!
-    Not actionable
-    """.strip()
-    items = extract_action_items(text)
-    assert "TODO: write tests" in items
-    assert "Ship it!" in items
-
+    - TODO: Refactor
+    - Not actionable
+    """
+    assert extract_action_items(text) == ["Ship it!", "TODO: Refactor"]
 
 def test_extract_action_items_tags():
     text = """

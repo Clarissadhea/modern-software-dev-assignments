@@ -37,7 +37,11 @@ QUESTION = (
 
 
 # TODO: Fill this in!
-YOUR_SYSTEM_PROMPT = ""
+YOUR_SYSTEM_PROMPT = """
+1. You must ONLY use the provided Context to write your code. Do not invent any API endpoints, base URLs, or authentication headers that are not explicitly mentioned in the Context.
+2. Ensure you import the 'requests' library.
+3. Your output must ONLY be a single valid Python code block (enclosed in ```python and ```). Do not include any explanation, conversational text, or markdown outside of the code block.
+"""
 
 
 # For this simple example
@@ -52,10 +56,10 @@ REQUIRED_SNIPPETS = [
 
 
 def YOUR_CONTEXT_PROVIDER(corpus: List[str]) -> List[str]:
-    """TODO: Select and return the relevant subset of documents from CORPUS for this task.
-
-    For example, return [] to simulate missing context, or [corpus[0]] to include the API docs.
-    """
+    """TODO: Select and return the relevant subset of documents from CORPUS for this task. """
+    # We must return the content of the API documentation (corpus[0]) so the LLM can read it.
+    if corpus:
+        return [corpus[0]]
     return []
 
 

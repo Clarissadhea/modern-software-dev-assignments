@@ -9,7 +9,29 @@ load_dotenv()
 NUM_RUNS_TIMES = 5
 
 # TODO: Fill this in! Try to get as close to 100% correctness across all runs as possible.
-YOUR_SYSTEM_PROMPT = ""
+YOUR_SYSTEM_PROMPT = """
+You must solve the problem step-by-step and ensure your final calculation is correct.
+
+Example 1:
+Problem: Jane has 10 apples. She gives 2 to her friend and eats 1. How many are left?
+Reasoning: 
+1. Initial apples: 10
+2. Given away: 10 - 2 = 8
+3. Eaten: 8 - 1 = 7
+Answer: 7
+
+Example 2:
+Problem: A 100-mile trip has a stop at mile 30. Another stop is 10 miles before the end. Distance between stops?
+Reasoning:
+1. First stop: 30 miles
+2. End of trip: 100 miles
+3. Second stop: 100 - 10 = 90 miles
+4. Distance between: 90 - 30 = 60 miles
+Answer: 60
+
+Now, solve the user's problem using the exact same logic.
+End your response with "Answer: <number>" on the very last line.
+"""
 
 USER_PROMPT = """
 Solve this problem, then give the final answer on the last line as "Answer: <number>".

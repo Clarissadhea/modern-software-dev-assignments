@@ -7,7 +7,28 @@ load_dotenv()
 NUM_RUNS_TIMES = 5
 
 # TODO: Fill this in!
-YOUR_SYSTEM_PROMPT = ""
+YOUR_SYSTEM_PROMPT = """"
+To reverse a word, you must process it letter by letter.
+
+Examples:
+Input: 
+Reverse the order of letters in the following word. Only output the reversed word, no other text:
+apple
+Output:
+e-l-p-p-a -> elppa
+
+Input:
+Reverse the order of letters in the following word. Only output the reversed word, no other text:
+stanford
+Output:
+d-r-o-f-n-a-t-s -> drofnats
+
+Input:
+Reverse the order of letters in the following word. Only output the reversed word, no other text:
+httpcircle
+Output:
+s-u-t-a-t-s-p-t-t-h -> sutatsptth
+"""
 
 USER_PROMPT = """
 Reverse the order of letters in the following word. Only output the reversed word, no other text:

@@ -26,3 +26,18 @@ class ActionItemRead(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class NoteListResponse(BaseModel):
+    items: list[NoteRead]
+    total: int
+
+
+class ActionItemListResponse(BaseModel):
+    items: list[ActionItemRead]
+    total: int
+
+
+class ExtractionResult(BaseModel):
+    tags: list[str]
+    action_items: list[str]

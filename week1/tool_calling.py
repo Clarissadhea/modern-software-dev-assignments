@@ -70,7 +70,21 @@ TOOL_REGISTRY: Dict[str, Callable[..., str]] = {
 # ==========================
 
 # TODO: Fill this in!
-YOUR_SYSTEM_PROMPT = ""
+YOUR_SYSTEM_PROMPT = """
+You have access to one tool:
+- Tool Name: `output_every_func_return_type`
+- Description: Returns a list of function names and their return types for a given file.
+
+Your task is to call this tool to analyze the current file. 
+
+CRITICAL INSTRUCTION: You must output ONLY a valid, raw JSON object representing the tool call. Do not include any explanations, prose, greetings, or markdown code blocks (do not use ```). 
+
+The JSON object must follow this exact schema (leave the args object completely empty):
+{
+  "tool": "output_every_func_return_type",
+  "args": {}
+}
+"""
 
 
 def resolve_path(p: str) -> str:
