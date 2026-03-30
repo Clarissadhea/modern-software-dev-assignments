@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from sqlalchemy import Boolean, Column, DateTime, Integer, String, Text
-from sqlalchemy.orm import declarative_base
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String, Text
+from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
 
@@ -13,12 +13,25 @@ class TimestampMixin:
     )
 
 
+class Project(Base, TimestampMixin):
+    __tablename__ = "projects"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(100), nullable=False)
+    description = Column(Text, nullable=True)
+
+    notes = relationship("Note", back_populates="project")
+
+
 class Note(Base, TimestampMixin):
     __tablename__ = "notes"
 
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String(200), nullable=False)
     content = Column(Text, nullable=False)
+    project_id = Column(Integer, ForeignKey("projects.id"), nullable=True)
+
+    project = relationship("Project", back_populates="notes")
 
 
 class ActionItem(Base, TimestampMixin):
