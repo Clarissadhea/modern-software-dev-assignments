@@ -5,7 +5,7 @@ description = "Course assignments with FastAPI + SQLite starter and tooling"
 authors = ["Course <course@example.com>"]
 readme = "README.md"
 packages = []
-package-mode = false
+package-mode = true
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
